@@ -9,9 +9,9 @@ function setShowSubmitErrorMsg(flag) {
 function validateInput(formData) {
     if (typeof formData != 'undefined') {
         //if(formData != ''){
-            return true;
+        return true;
         //}
-    }else{        
+    } else {
         return false;
     }
 };
@@ -23,7 +23,7 @@ $("#dismissSubmitError").click(function () {
     setShowSubmitErrorMsg(false)
 })
 
-$(function () {    
+$(function () {
     $("#logit").submit(function (event) {
         // there is no error
         setShowSubmitErrorMsg(false);
@@ -35,24 +35,41 @@ $(function () {
         var kilo = data[1].value;
         var stone = data[2].value;
         //TODO: some validation would be nice this one sucks ass but would do for now as a place holder
-        var isValidForm = validateInput(data);        
+        var isValidForm = validateInput(data);
         // data.forEach(element => {
         //     isValidForm = isValidForm + validateInput(element);
         // });
-        if(isValidForm){
+        if (isValidForm) {
             console.log('valid');
             // clean up data
             name = toUpperCaseFirst(name);
             // set a timestamp
-            var timestamp = moment().format('YYYY-MM-DD');            
+            var timestamp = moment().format('YYYY-MM-DD');
             // send it to ELK
-            console.log(name,kilo,stone,timestamp);
-        }else{
-            setShowSubmitErrorMsg(true);  
+            //url = window.appConfig.ELK_URL || 'localhost:9200';
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://localhost:9200/pondus/weights",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "cache-control": "no-cache",
+                },
+                "processData": false,
+                "data": "{ \"name\" : \"Amaya\", \"kilogram\": \"21.5\", \"stones\": \"3.0\",\"created_at\":\"2018-10-31\"}"
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+            console.log(name, kilo, stone, timestamp);
+        } else {
+            setShowSubmitErrorMsg(true);
         }
-        
-        
-            
+
+
+
         //dologit
     });
 });
