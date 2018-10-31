@@ -44,9 +44,9 @@ $(function () {
             // clean up data
             name = toUpperCaseFirst(name);
             // set a timestamp
-            
+            var timestamp = moment().format('YYYY-MM-DD');            
             // send it to ELK
-            console.log(name,kilo,stone);
+            console.log(name,kilo,stone,timestamp);
         }else{
             setShowSubmitErrorMsg(true);  
         }
