@@ -8,9 +8,9 @@ function setShowSubmitErrorMsg(flag) {
 }
 function validateInput(formData) {
     if (typeof formData != 'undefined') {
-        if(formData != ''){
+        //if(formData != ''){
             return true;
-        }
+        //}
     }else{        
         return false;
     }
@@ -18,6 +18,10 @@ function validateInput(formData) {
 function toUpperCaseFirst(value) {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
+
+$("#dismissSubmitError").click(function () {
+    setShowSubmitErrorMsg(false)
+})
 
 $(function () {    
     $("#logit").submit(function (event) {
@@ -30,22 +34,25 @@ $(function () {
         var name = data[0].value;
         var kilo = data[1].value;
         var stone = data[2].value;
-        // perform some validation
-        var isValidForm;
+        //TODO: some validation would be nice this one sucks ass but would do for now as a place holder
+        var isValidForm = validateInput(data);        
         // data.forEach(element => {
         //     isValidForm = isValidForm + validateInput(element);
         // });
         if(isValidForm){
             console.log('valid');
+            // clean up data
+            name = toUpperCaseFirst(name);
+            // set a timestamp
+            
+            // send it to ELK
+            console.log(name,kilo,stone);
         }else{
             setShowSubmitErrorMsg(true);  
         }
-        name = toUpperCaseFirst(name);
-        //var cleanData = data.forEach(validateInput);
-        // set a timestamp
-
-        // send it to ELK
-        console.log(name,kilo,stone);
+        
+        
+            
         //dologit
     });
 });
