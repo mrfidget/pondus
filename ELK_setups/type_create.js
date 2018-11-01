@@ -26,11 +26,11 @@ var data = JSON.stringify({
       },
       "created_at": {
         "type": "date",
-        "format": "yyyy'-'MM'-'dd'"
+        "format": "yyyy'-'MM'-'dd' 'HH':'mm'"
       }
     }
   }
-});
+}); 
 
 var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
