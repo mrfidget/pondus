@@ -46,15 +46,16 @@ $(function () {
             // set a timestamp
             var timestamp = moment().format('YYYY-MM-DD');
             // send it to ELK
-            //url = window.appConfig.ELK_URL || 'localhost:9200';
+            var url;
+            //typeof window.appConfig.ELK_URL != 'undefined'  ? url = window.appConfig.ELK_URL : 'test'
+            console.log(url);
             var settings = {
                 "async": true,
                 "crossDomain": true,
                 "url": "http://localhost:9200/pondus/weights",
                 "method": "POST",
                 "headers": {
-                    "Content-Type": "application/json",
-                    "cache-control": "no-cache",
+                    "Content-Type": "application/json"
                 },
                 "processData": false,
                 "data": "{ \"name\" : \"Amaya\", \"kilogram\": \"21.5\", \"stones\": \"3.0\",\"created_at\":\"2018-10-31\"}"
