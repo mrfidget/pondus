@@ -26,9 +26,9 @@ $(function () {
             // don't go anywhere            
             // collect the data
             var data = $("#logit :input").serializeArray();
-            var name = data[0].value;
-            var kilo = data[1].value;
-            var stone = data[2].value;            
+            var name = data[0].value;            
+            var stone = data[1].value;
+            var kilo = data[2].value;            
             // clean up data
             name = toUpperCaseFirst(name);
             // set a timestamp
