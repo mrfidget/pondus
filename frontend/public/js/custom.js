@@ -1,26 +1,17 @@
-function setShowSubmitErrorMsg(flag) {
+function setShowSubmitMsg(flag) {
     if (flag) {
-        $("#submitError").show();
+        $("#submitOK").show();
     } else {
-        $("#submitError").hide();
+        $("#submitOK").hide();
     }
 
 }
-function validateInput(formData) {
-    if (typeof formData != 'undefined') {
-        //if(formData != ''){
-        return true;
-        //}
-    } else {
-        return false;
-    }
-};
 function toUpperCaseFirst(value) {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
 
-$("#dismissSubmitError").click(function () {
-    setShowSubmitErrorMsg(false)
+$("#dismissSubmitSuccess").click(function () {
+    setShowSubmitMsg(false);
 })
 
 $(function () {
@@ -31,7 +22,7 @@ $(function () {
     })
         .on('form:submit', function () {
             // there is no error
-            setShowSubmitErrorMsg(false);
+            //setShowSubmitErrorMsg(false);
             // don't go anywhere            
             // collect the data
             var data = $("#logit :input").serializeArray();
@@ -61,6 +52,9 @@ $(function () {
             $.ajax(settings)
                 .done(function (response) {
                     console.log(response);
+                    if(response.result == "created"){                        
+                        setShowSubmitMsg(true);
+                    }
                 });  
             return false;          
         });
