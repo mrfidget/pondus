@@ -14,7 +14,19 @@ $("#dismissSubmitSuccess").click(function () {
     setShowSubmitMsg(false);
 })
 
+function kiloToStone(kilo){
+    // rund to two decimal points
+    stone = Math.round((kilo * 0.157473) * 100) / 100;
+    return stone;
+}
+
 $(function () {
+    var $kiloToStone;
+    $('#kilo').on('keyup',function(){
+        //console.log('p');
+        $kiloToStone = kiloToStone($('#kilo').val());
+        $('#stone').val($kiloToStone);
+    });
     $('#logit').parsley().on('field:validated', function () {
         var ok = $('.parsley-error').length === 0;
         $('.bs-callout-info').toggleClass('hidden', !ok);
