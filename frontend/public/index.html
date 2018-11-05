@@ -24,7 +24,7 @@
     <br>
     <div class="row">
         <div class="container-fluid">
-            
+
             <div class="row">
                 <div class="col-sm-4 offset-md-4">
                     <div class="card text-white bg-success mb-3">
@@ -58,14 +58,14 @@
                                             id="name" data-parsley-required="true" data-parsley-pattern="/^[A-Za-z]+$/">
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-form-label col-form-label-lg" for="stone">Stones</label>
-                                        <input class="form-control form-control-lg" type="text" placeholder="St" name="stone"
-                                            id="stone" data-parsley-required="true" data-parsley-pattern="^\d{1,2}(\.\d{0,2})?$">
-                                    </div>
-                                    <div class="form-group">
                                         <label class="col-form-label col-form-label-lg" for="kilo">Kilograms</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Kg" name="kilo"
-                                            id="kilo" data-parsley-pattern="^\d{1,3}(\.\d{0,2})?$">
+                                            id="kilo" data-parsley-required="true" data-parsley-pattern="^\d{1,3}(\.\d{0,2})?$">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-lg" for="stone">Stones</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="St" name="stone"
+                                            id="stone" data-parsley-pattern="^\d{1,2}(\.\d{0,2})?$">
                                     </div>
                                     <button type="submit" class="btn btn-secondary">Submit</button>
                                 </fieldset>
